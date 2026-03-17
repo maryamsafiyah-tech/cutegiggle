@@ -1,0 +1,142 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --bg: #f3f5f8;
+  --card: #ffffff;
+  --border: #d7dde6;
+  --text: #1e293b;
+  --muted: #5c6b80;
+  --brand: #3b82f6;
+  --assistant: #eef6ff;
+  --user: #e8fff2;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto auto 1fr auto;
+}
+
+.topbar h1 { margin: 0 0 0.25rem; }
+.topbar p { margin: 0; color: var(--muted); }
+
+.controls,
+.chat-column,
+.composer {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.controls {
+  padding: 0.9rem 1rem;
+}
+
+.control-title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.model-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.model-pill {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f9fbff;
+}
+
+.hint { margin: 0.6rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+.chat-columns {
+  display: grid;
+  gap: 1rem;
+  min-height: 55vh;
+}
+
+.chat-columns.single { grid-template-columns: 1fr; }
+.chat-columns.dual { grid-template-columns: 1fr 1fr; }
+
+.chat-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.model-name {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.messages {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  overflow: auto;
+  min-height: 300px;
+}
+
+.message {
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.message.user { background: var(--user); border: 1px solid #bfead0; }
+.message.assistant { background: var(--assistant); border: 1px solid #cde3ff; }
+.message.pending { opacity: 0.7; font-style: italic; }
+
+.composer {
+  display: flex;
+  padding: 0.6rem;
+  gap: 0.6rem;
+}
+
+.composer input {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.composer button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: white;
+  background: var(--brand);
+  cursor: pointer;
+}
+
+.composer button:disabled { opacity: 0.65; cursor: not-allowed; }
+
+@media (max-width: 800px) {
+  .chat-columns.dual {
+    grid-template-columns: 1fr;
+  }
+}
