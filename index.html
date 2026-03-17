@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dual Model Chat Compare</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <h1>Chat Model Comparator</h1>
+        <p>Select up to 2 models, send one prompt, and compare answers side by side.</p>
+      </header>
+
+      <section class="controls" aria-label="Model picker">
+        <label class="control-title">Choose models (max 2):</label>
+        <div id="model-picker" class="model-picker"></div>
+        <p id="selection-hint" class="hint">No models selected.</p>
+      </section>
+
+      <section id="chat-columns" class="chat-columns single" aria-live="polite"></section>
+
+      <form id="composer" class="composer" autocomplete="off">
+        <input
+          id="prompt-input"
+          name="prompt"
+          type="text"
+          placeholder="Type your prompt and hit Enter..."
+          required
+        />
+        <button type="submit">Send</button>
+      </form>
+    </main>
+
+    <template id="chat-column-template">
+      <article class="chat-column">
+        <h2 class="model-name"></h2>
+        <div class="messages"></div>
+      </article>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
